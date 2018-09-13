@@ -1,4 +1,4 @@
-export default interface IAppState {
+export interface CredentialState {
     username: string,
     password: string
 }
