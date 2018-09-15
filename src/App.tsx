@@ -6,8 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import Viewer from './components/ShowText';
 import { changePass, changeUser } from './actions';
 import { connect } from 'react-redux';
+import { Dispatch, AnyAction } from 'redux';
 
-const mapDispatchToProps = (dispatch: any ) => {
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
     changePass: (pass: string) => dispatch(changePass(pass)),
     changeUser: (user: string) => dispatch(changeUser(user))
