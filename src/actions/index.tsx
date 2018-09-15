@@ -1,10 +1,13 @@
-import { CHANGE_PASS } from "../constants/actions-types";
-import { CHANGE_USER } from "../constants/actions-types";
+import actionTypes from "../constants/actions-types";
 
 export const changeUser = (user: string) => ({
-  type: CHANGE_USER, payload: user
+  type: actionTypes.CHANGE_USER, payload: user
 });
 
 export const changePass = (pass: string) => ({
-  type: CHANGE_PASS, payload: pass
+  type: actionTypes.CHANGE_PASS, payload: pass
+});
+
+export const submitCredentials = (user: string, pass: string) => ({
+  type: actionTypes.SUBMIT_CREDENTIALS, payload: { user, pass }
 });

@@ -1,5 +1,5 @@
 import { AnyAction, Reducer } from "redux";
-import { CHANGE_USER, CHANGE_PASS } from "../constants/actions-types";
+import actionTypes from "../constants/actions-types";
 import { CredentialState } from "../interfaces/App.interface";
 
 const initialState : CredentialState = {
@@ -9,12 +9,14 @@ const initialState : CredentialState = {
 
 const rootReducer : Reducer<CredentialState> = (state : CredentialState = initialState, action: AnyAction) => {
   switch (action.type) {
-    case CHANGE_USER:
-      return {...state, username: action.payload};
-    case CHANGE_PASS:
-      return {...state, password: action.payload};
+    case actionTypes.CHANGE_USER:
+      return { ...state, username: action.payload };
+    case actionTypes.CHANGE_PASS:
+      return { ...state, password: action.payload };
+    case actionTypes.SUBMIT_CREDENTIALS:
+      return { ...state, username: action.payload.user, password: action.payload.pass }
     default:
-      return {...state};
+      return { ...state };
   }
 
 };

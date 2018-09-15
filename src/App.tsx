@@ -4,20 +4,18 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Viewer from './components/ShowText';
-import { changePass, changeUser } from './actions';
+import { submitCredentials } from './actions';
 import { connect } from 'react-redux';
 import { Dispatch, AnyAction } from 'redux';
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
-    changePass: (pass: string) => dispatch(changePass(pass)),
-    changeUser: (user: string) => dispatch(changeUser(user))
+    submitCredentials: (user: string, pass: string) => { dispatch(submitCredentials(user,pass)) }
   }
 };
 
 interface IConnectedAppProps {
-  changePass(pass: string): void;
-  changeUser(user: string): void;
+  submitCredentials(user: string, pass: string): void;
 }
 
 const initialState = {
@@ -38,13 +36,13 @@ class ConnectedApp extends React.Component<IConnectedAppProps,IConnectedAppState
       <React.Fragment>
         <CssBaseline/>
         <div className='centered'>
-          <TextField onChange={this.handlePassChange}/>
-          <TextField onChange={this.handleUserChange}/>
+          <TextField onChange={ this.handleUserChange }/>
+          <TextField onChange={ this.handlePassChange }/>
         
           <Button
             variant='outlined'
             color='primary'
-            onClick={this.updateFields}
+            onClick={ this.updateFields }
           >Help Me!</Button>
         </div>
         <Viewer/>
@@ -54,8 +52,7 @@ class ConnectedApp extends React.Component<IConnectedAppProps,IConnectedAppState
 
   updateFields = (event: React.MouseEvent<HTMLInputElement>) => {
     const { user, pass } = this.state;
-    this.props.changePass(pass);
-    this.props.changeUser(user);
+    this.props.submitCredentials(user, pass);
   }
 
   handlePassChange = (event: React.ChangeEvent<HTMLInputElement>) => {
