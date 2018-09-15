@@ -11,6 +11,7 @@
     "object-literal-sort-keys": false,
     "no-unused-variable": false,
     "interface-name": false,
-    "member-access": [true, "no-public"]
+    "member-access": [true, "no-public"],
+    "no-console": false
   }
 }
