@@ -1,6 +1,8 @@
 export interface CredentialState {
     username: string,
-    password: string
+    password: string,
+    storedUser: string,
+    storedPass: string
 }
 
 export interface CredentialProps {

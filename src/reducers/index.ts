@@ -5,6 +5,8 @@ import { CredentialState } from "../interfaces/App.interface";
 const initialState : CredentialState = {
   username: '',
   password: '',
+  storedUser: '',
+  storedPass: ''
 };
 
 const rootReducer : Reducer<CredentialState> = (state : CredentialState = initialState, action: AnyAction) => {
@@ -15,6 +17,8 @@ const rootReducer : Reducer<CredentialState> = (state : CredentialState = initia
       return { ...state, password: action.payload };
     case actionTypes.SUBMIT_CREDENTIALS:
       return { ...state, username: action.payload.user, password: action.payload.pass }
+    case actionTypes.CREATE_ACCOUNT:
+      return { ...state, storedUser: action.payload.user, storedPass: action.payload.pass }
     default:
       return { ...state };
   }

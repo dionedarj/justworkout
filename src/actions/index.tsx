@@ -11,3 +11,7 @@ export const changePass = (pass: string) => ({
 export const submitCredentials = (user: string, pass: string) => ({
   type: actionTypes.SUBMIT_CREDENTIALS, payload: { user, pass }
 });
+
+export const createAccount = (user: string, pass: string) => ({
+  type: actionTypes.CREATE_ACCOUNT, payload: { user, pass }
+});
