@@ -7,8 +7,10 @@ const initialState : CredentialState = {
   password: '',
 };
 
-const rootReducer : Reducer<CredentialState> = (state : CredentialState = initialState, action: AnyAction) => {
+const rootReducer : Reducer<CredentialState> = (state : CredentialState = initialState, action: AnyAction): CredentialState => {
   switch (action.type) {
+    case actionTypes.CHANGE_CREDENTIAL:
+      return { ...state, [action.credential]: action.value}
     case actionTypes.CHANGE_USER:
       return { ...state, username: action.payload };
     case actionTypes.CHANGE_PASS:
@@ -18,7 +20,6 @@ const rootReducer : Reducer<CredentialState> = (state : CredentialState = initia
     default:
       return { ...state };
   }
-
 };
 
 export default rootReducer;
