@@ -1,18 +1,15 @@
 import './App.css';
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormGroup from '@material-ui/core/FormGroup';
-import Viewer from './components/ShowText';
-import { changeCredential, loadCredentials, submitCredentials } from './actions';
+import ViewerContainer from './containers/ViewerContainer';
+import LoginContainer from './containers/LoginContainer';
+import { changeUserCredential, loadCredentials, submitCredentials } from './actions';
 import { connect } from 'react-redux';
 import { Dispatch, AnyAction } from 'redux';
-import { FormControl } from '@material-ui/core';
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
-    changeCredential: (credential: string, value: string) => { dispatch(changeCredential(credential, value)) },
+    changeCredential: (credential: string, value: string) => { dispatch(changeUserCredential(credential, value)) },
     loadCredentials: () => { dispatch<any>(loadCredentials())},
     submitCredentials: (user: string, pass: string) => { dispatch(submitCredentials(user, pass))}
   }
@@ -46,23 +43,9 @@ class ConnectedApp extends React.Component<IConnectedAppProps, IConnectedAppStat
       <React.Fragment>
         <CssBaseline/>
         <div className='centered'>
-          <FormGroup>
-            <FormControl>
-              <TextField onChange={ this.handleUserChange }/>
-            </FormControl>
-            <FormControl>
-              <TextField onChange={ this.handlePassChange }/>
-            </FormControl>
-            <FormControl>
-              <Button
-                variant='outlined'
-                color='primary'
-                onClick={ this.validateCredentials }
-              >Help Me!</Button>
-            </FormControl>
-          </FormGroup>
+          <LoginContainer />
         </div>
-        <Viewer/>
+        <ViewerContainer />
       </React.Fragment>
     );
   }
