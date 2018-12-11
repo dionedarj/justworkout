@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { CredentialState } from '../interfaces/App.interface';
+import { CredentialState, CredentialProps } from '../interfaces/App.interface';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -9,20 +9,20 @@ import '../App.css';
 const mapStateToProps = (state: CredentialState) => {
   return {
     username: state.username,
-    password: state.password
+    password: state.password,
   };
 };
 
-const ConnectedViewer: React.SFC<any> = ({ username, password }: CredentialState) => {
+const ConnectedViewer: React.SFC<CredentialProps> = ({ username, password }) => {
   return (
     <React.Fragment>
       <FormGroup>
-        <FormControl className='centered'>
+        <FormControl className="centered">
           <TextField value={username} />
         </FormControl>
-        <FormControl className='centered'>
+        <FormControl className="centered">
           <TextField value={password} />
-        </FormControl>      
+        </FormControl>
       </FormGroup>
     </React.Fragment>
   );

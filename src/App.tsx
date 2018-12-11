@@ -9,10 +9,10 @@ import { Dispatch, AnyAction } from 'redux';
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
-    changeCredential: (credential: string, value: string) => { dispatch(changeUserCredential(credential, value)) },
-    loadCredentials: () => { dispatch<any>(loadCredentials())},
-    submitCredentials: (user: string, pass: string) => { dispatch(submitCredentials(user, pass))}
-  }
+    changeCredential: (credential: string, value: string) => { dispatch(changeUserCredential(credential, value)); },
+    loadCredentials: () => { dispatch<any>(loadCredentials()); },
+    submitCredentials: (user: string, pass: string) => { dispatch(submitCredentials(user, pass));},
+  };
 };
 
 interface IConnectedAppProps {
@@ -24,8 +24,8 @@ interface IConnectedAppProps {
 
 const initialState = {
   username: '',
-  password: ''
-}
+  password: '',
+};
 
 type IConnectedAppState = Readonly<typeof initialState>;
 
@@ -33,7 +33,7 @@ class ConnectedApp extends React.Component<IConnectedAppProps, IConnectedAppStat
   constructor(props: IConnectedAppProps) {
     super(props);
     this.state = initialState;
-  };
+  }
 
   componentDidMount() {
     this.props.loadCredentials();
@@ -43,7 +43,7 @@ class ConnectedApp extends React.Component<IConnectedAppProps, IConnectedAppStat
     return (
       <React.Fragment>
         <CssBaseline/>
-        <div className='centered'>
+        <div className="centered">
           <LoginContainer />
         </div>
         <ViewerContainer />
@@ -61,15 +61,15 @@ class ConnectedApp extends React.Component<IConnectedAppProps, IConnectedAppStat
     this.setState({
       password: event.currentTarget.value,
     });
-  };
-  
+  }
+
   handleUserChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       username: event.currentTarget.value,
     });
-  };
-};
+  }
+}
 
-const App = connect(null, mapDispatchToProps)(ConnectedApp)
+const App = connect(null, mapDispatchToProps)(ConnectedApp);
 
 export default App;

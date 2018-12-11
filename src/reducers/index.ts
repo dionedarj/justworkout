@@ -1,26 +1,39 @@
-import { AnyAction, Reducer } from "redux";
-import actionTypes from "../constants/actions-types";
-import { CredentialState } from "../interfaces/App.interface";
+import { AnyAction, Reducer } from 'redux';
+import actionTypes from '../constants/action-types';
+import { CredentialState } from '../interfaces/App.interface';
 
-const initialState : CredentialState = {
-  username: '',
-  password: '',
-  storedUser: '',
-  storedPass: ''
+const initialState: CredentialState = {
+  storedCredentials: {
+    username: '',
+    password: '',
+  },
+  loginCredentials: {
+    username: '',
+    password: '',
+  },
 };
 
-const rootReducer : Reducer<CredentialState> = (state : CredentialState = initialState, action: AnyAction) => {
+const rootReducer: Reducer<CredentialState> =
+(state: CredentialState = initialState, action: AnyAction) => {
   switch (action.type) {
-    case actionTypes.CHANGE_USER:
-      return { ...state, username: action.payload };
-    case actionTypes.CHANGE_PASS:
-      return { ...state, password: action.payload };
-    case actionTypes.SUBMIT_CREDENTIALS:
-      return { ...state, username: action.payload.user, password: action.payload.pass }
     case actionTypes.CREATE_ACCOUNT:
-      return { ...state, storedUser: action.payload.user, storedPass: action.payload.pass }
+      return {
+        ...state,
+        storedCredentials: {
+          username: action.username,
+          password: action.password,
+        },
+      };
+    case actionTypes.LOGIN:
+      return {
+        ...state,
+        loginCredentials: {
+          username: action.username,
+          password: action.password,
+        },
+      };
     default:
-      return { ...state };
+      return state;
   }
 
 };

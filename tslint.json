@@ -1,17 +1,17 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": "tslint-config-airbnb",
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
-      "node_modules/**/*.ts"
+      "node_modules/**/*.ts",
+      "node_modules/**/*.js",
+      "*.json",
+      "**/*.json"
     ]
   },
   "rules": {
-    "ordered-imports": false,
-    "object-literal-sort-keys": false,
-    "no-unused-variable": false,
-    "interface-name": false,
-    "member-access": [true, "no-public"],
-    "no-console": false
+    "max-line-length": false,
+    "import-name": false,
+    "variable-name": false
   }
 }

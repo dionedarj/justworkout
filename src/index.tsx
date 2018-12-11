@@ -18,8 +18,8 @@ import App from './App';
 import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const Window : any = window;
-Window.store = store;
+const WINDOW : any = window;
+WINDOW.store = store;
 
 render(
   <Provider store={store}>

@@ -5,7 +5,7 @@ import Viewer from '../components/Viewer';
 const mapStateToProps = (state: CredentialState) => {
   return {
     username: state.storedCredentials.username,
-    password: state.storedCredentials.password
+    password: state.storedCredentials.password,
   };
 };
 
