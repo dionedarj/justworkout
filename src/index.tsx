@@ -18,13 +18,13 @@ import App from './App';
 import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const Window : any = window;
+const Window: any = window;
 Window.store = store;
 
 render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
 registerServiceWorker();
